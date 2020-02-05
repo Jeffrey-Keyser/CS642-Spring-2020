@@ -1,6 +1,14 @@
+#!/usr/bin/python3
+
+# SBATCH -p wacc
+# SBATCH -J cs642
+# SBATCH -o cs642.out -e cs642.err
+# SBATCH -n 32
+
 import hashlib
 import os
 import sys
+import tqdm
 
 import multiprocessing as mp
 
@@ -18,16 +26,19 @@ assert hash("ironman,password,84829348943") == expected
 filename = "crackstation.txt"
 file_size = os.path.getsize(filename)
 
+
 def try_password(start, size):
     with open(filename, errors="ignore") as f:
         f.seek(start)
-        print(start / file_size)
-        sys.stdout.flush()
         for p in f.readlines(size):
-            if hash(f"bucky,{p},8934029034") == "1b2ebfab6e70dcb13f3ff4750d065bab8474dac4dc611df339446071ae3e7977":
+            if (
+                hash(f"bucky,{p},8934029034")
+                == "1b2ebfab6e70dcb13f3ff4750d065bab8474dac4dc611df339446071ae3e7977"
+            ):
                 print(f"====================== {p} ==================")
 
-def chunkify(size=1 << 20):
+
+def chunkify(size):
     with open(filename, errors="ignore") as f:
         end = f.tell()
         while True:
@@ -39,13 +50,20 @@ def chunkify(size=1 << 20):
             if end > file_size:
                 break
 
-pool = mp.Pool()
+
+pool = mp.Pool(1)
 jobs = []
+chunks = list(chunkify(size=64 << 10))
+pbar = tqdm.tqdm(total=len(chunks))
 
-for start, size in chunkify():
-    jobs.append(pool.apply_async(try_password,(start,size)) )
 
-for job in jobs:
-    pass
+def log_result(result):
+    pbar.update(1)
+
+
+for start, size in chunks:
+    jobs.append(pool.apply_async(try_password, (start, size), callback=log_result))
+
 pool.close()
 pool.join()
+
