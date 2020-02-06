@@ -7,9 +7,9 @@
 
 import hashlib
 import os
-import tqdm
+import multiprocessing
 
-import multiprocessing as mp
+import tqdm
 
 
 def hash(m):
@@ -50,7 +50,7 @@ chunks = list(chunkify(filename, size=32 << 10))
 pbar = tqdm.tqdm(total=len(chunks))
 update = lambda _: pbar.update(1)
 
-with mp.Pool() as pool:
+with multiprocessing.Pool() as pool:
     for start, size in chunks:
         pool.apply_async(crack, (filename, start, size), callback=update)
 
