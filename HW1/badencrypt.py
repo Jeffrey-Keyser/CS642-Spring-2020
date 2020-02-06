@@ -31,6 +31,6 @@ message = """AMOUNT: $  10.00
 
 iv = os.urandom(16)
 cipher = Crypto.Cipher.AES.new(key, Crypto.Cipher.AES.MODE_CBC, IV=iv)
-ciphertext = cipher.encrypt(message.encode()).hex()
+ciphertext = cipher.encrypt(message.encode())
 tag = hashlib.sha256(message.encode()).hexdigest()
-print(iv.hex() + ciphertext + tag)
+print(iv.hex() + ciphertext.hex() + tag)

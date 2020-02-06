@@ -28,10 +28,10 @@ if len(ciphertextWithTag) < 16 + 16 + 32:
     sys.exit(0)
 
 iv = ciphertextWithTag[:16]
-ciphertext = ciphertextWithTag[:len(ciphertextWithTag) - 32]  # with iv
+ciphertext = ciphertextWithTag[16:len(ciphertextWithTag) - 32]
 tag = ciphertextWithTag[len(ciphertextWithTag) - 32:]
 cipher = Crypto.Cipher.AES.new(key, Crypto.Cipher.AES.MODE_CBC, IV=iv)
-plaintext = cipher.decrypt(ciphertext[16:])  # here [16:] has spare apart iv
+plaintext = cipher.decrypt(ciphertext)
 
 # Check the tag
 if tag.hex() != hashlib.sha256(plaintext).hexdigest():

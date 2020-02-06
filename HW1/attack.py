@@ -16,12 +16,11 @@ if len(ciphertextWithTag) < 16 + 16 + 32:
     sys.exit(0)
 
 iv = ciphertextWithTag[:16]
-ciphertext = ciphertextWithTag[:len(ciphertextWithTag) - 32]
-tag = ciphertextWithTag[len(ciphertextWithTag) - 32:]
+ciphertext = ciphertextWithTag[16:len(ciphertextWithTag) - 32]
 
 # Modify the input so the transfer amount is more lucrative to the recipient
 
-message = """AMOUNT: $  99.00
+message = """AMOUNT: $  11.00
         Originating Acct Holder: Bucky
         Orgininating Acct #82123-09837
         
@@ -29,7 +28,8 @@ message = """AMOUNT: $  99.00
         held by a Wisc student at the National Bank of the Cayman Islands.
         """
 
+iv = iv[:12] + bytes([iv[12] + 1]) + iv[13:]
 tag = hashlib.sha256(message.encode()).hexdigest()
 
 # Print the new encrypted message
-print(ciphertext.hex() + tag)
+print(iv.hex() + ciphertext.hex() + tag)
