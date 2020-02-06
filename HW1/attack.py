@@ -6,6 +6,7 @@
 # Outputs a modified ciphertext and tag
 
 import sys
+import hashlib
 
 # Grab ciphertext from first argument
 ciphertextWithTag = bytes.fromhex(sys.argv[1])
@@ -18,8 +19,18 @@ iv = ciphertextWithTag[:16]
 ciphertext = ciphertextWithTag[:len(ciphertextWithTag)-32]
 tag = ciphertextWithTag[len(ciphertextWithTag)-32:]
 
-# TODO: Modify the input so the transfer amount is more lucrative to the recipient
+# Modify the input so the transfer amount is more lucrative to the recipient
 
-# TODO: Print the new encrypted message
-# you can change the print content if necessary
-print(ciphertext.hex() + tag.hex())
+message = \
+  """AMOUNT: $  90.00
+  Originating Acct Holder: Bucky
+  Orgininating Acct #82123-09837
+  
+  I authorized the above amount to be transferred to the account #38108-443280
+  held by a Wisc student at the National Bank of the Cayman Islands.
+  """
+
+tag = hashlib.sha256(message.encode()).hexdigest()
+
+# Print the new encrypted message
+print(ciphertext.hex() + tag)
