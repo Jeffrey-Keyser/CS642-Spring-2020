@@ -20,14 +20,14 @@ key = f.readline()
 key = bytes.fromhex(key[:32])
 f.close()
 
-message = \
-"""AMOUNT: $  10.00
-Originating Acct Holder: Bucky
-Orgininating Acct #82123-09837
+message = """AMOUNT: $  10.00
+        Originating Acct Holder: Bucky
+        Orgininating Acct #82123-09837
+        
+        I authorized the above amount to be transferred to the account #38108-443280
+        held by a Wisc student at the National Bank of the Cayman Islands.
+        """
 
-I authorized the above amount to be transferred to the account #38108-443280
-held by a Wisc student at the National Bank of the Cayman Islands.
-"""
 
 iv = os.urandom(16)
 cipher = Crypto.Cipher.AES.new(key, Crypto.Cipher.AES.MODE_CBC, IV=iv)
