@@ -24,8 +24,8 @@ def crack(filename, start, size):
     with open(filename, errors="ignore") as f:
         f.seek(start)
         for p in f.readlines(size):
-            if hash(f"bucky,{p},8934029034") == expected:
-                print(f"====================== {p} ==================")
+            if hash(f"bucky,{p[:-1]},8934029034") == expected:
+                print(f"====================== {p[:-1]} ==================")
 
 
 def chunkify(filename, size):
@@ -46,7 +46,7 @@ expected = "5483d76bc214a60e35a8a068a28912c168ea5aea8d1441559e3568135185d636"
 assert hash("ironman,password,84829348943") == expected
 
 filename = "crackstation-human-only.txt"
-chunks = list(chunkify(filename, size=32 << 10))
+chunks = list(chunkify(filename, size=1 << 20))
 pbar = tqdm.tqdm(total=len(chunks))
 update = lambda _: pbar.update(1)
 
@@ -57,3 +57,4 @@ with multiprocessing.Pool() as pool:
     pool.close()
     pool.join()
 
+# Newm@dis0n
