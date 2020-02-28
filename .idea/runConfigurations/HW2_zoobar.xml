@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="HW2-zoobar" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/HW2/zoobar/www" port="8080">
+    <method v="2" />
+  </configuration>
+</component>
