@@ -46,7 +46,7 @@ expected = "5483d76bc214a60e35a8a068a28912c168ea5aea8d1441559e3568135185d636"
 assert hash("ironman,password,84829348943") == expected
 
 filename = "crackstation-human-only.txt"
-chunks = list(chunkify(filename, size=1 << 20))
+chunks = list(chunkify(filename, size=16 << 10))
 pbar = tqdm.tqdm(total=len(chunks))
 update = lambda _: pbar.update(1)
 
