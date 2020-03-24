@@ -59,7 +59,7 @@ class PortScanDetector:
                 print(
                     f"Port scan!\n"
                     f"Dst IP: {inet_ntoa(dst_ip)}\n"
-                    f"Packet number: {pkt_nums_str}\n"
+                    f"Packet number: {pkt_nums_str}"
                 )
 
 
@@ -73,20 +73,25 @@ class SYNFloodDetector:
         port = ip_pkt.data.dport
         pkt_list = self.ip_port_to_pkts[(ip, port)]
 
+        if pkt_list is None:
+            return
+
         pkt_list.append((ts, pkt_num))
 
-        if len(pkt_list) < 101:
-            pkt_list[:] = [e for e in pkt_list if ts - e[0] < 1]
-        else:
-            pkt_nums = sorted(pkt_num for (_, pkt_num) in pkt_list)
-            pkt_nums_str = ", ".join(map(str, pkt_nums))
-            print(
-                f"SYN floods!\n"
-                f"Dst IP: {inet_ntoa(ip)}\n"
-                f"Dst Port: {port}\n"
-                f"Packet number: {pkt_nums_str}\n"
-            )
-            pkt_list.clear()
+        if len(pkt_list) >= 101:
+            if ts - pkt_list[0][0] <= 1:
+                pkt_nums = sorted(pkt_num for (_, pkt_num) in pkt_list)
+                pkt_nums_str = ", ".join(map(str, pkt_nums))
+                print(
+                    f"SYN floods!\n"
+                    f"Dst IP: {inet_ntoa(ip)}\n"
+                    f"Dst Port: {port}\n"
+                    f"Packet number: {pkt_nums_str}"
+                )
+
+                self.ip_port_to_pkts[(ip, port)] = None
+
+            pkt_list.pop(0)
 
 
 def detect(data):
