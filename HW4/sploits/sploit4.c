@@ -6,8 +6,8 @@
 
 #define TARGET "/tmp/target4"
 
-void write_with_padding(char* buf, size_t padding){
-  char* ptr = buf + strlen(buf);
+void write_with_padding(char *buf, size_t padding) {
+  char *ptr = buf + strlen(buf);
   memset(ptr, 'A', padding);
   strcpy(ptr + padding, "%n");
 }
