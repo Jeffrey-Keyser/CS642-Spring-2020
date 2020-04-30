@@ -9,6 +9,7 @@
 3. From the camera, obtain the router login credential:
 
     Username: admin
+
     Password: badg3r$are@wesome!!
 
 4. Search for the router in NIDAN: 
@@ -21,10 +22,12 @@
 
 6. Forward ports in router to obtain access to BadgerSpeaker and BadgerVoice Assistant
 
-    BadgerCam:              192.168.0.1:8083 -> 8001
-    BadgerSpeaker:          192.168.0.2:8008 -> 8002
-    BadgerVoice Assistant:  192.168.0.3:7615 -> 8003
-    Microwave:              192.168.0.4:9123 -> 8000
+    | Device | IP Address -> Forwading Port |
+    | --- | --- |
+    | BadgerCam |              192.168.0.1:8083 -> 8001 |
+    | BadgerSpeaker |          192.168.0.2:8008 -> 8002 |
+    | BadgerVoice Assistant |  192.168.0.3:7615 -> 8003 | 
+    | Microwave |              192.168.0.4:9123 -> 8000 |
 
 7. Record audio "Turn on the microwave"
 
