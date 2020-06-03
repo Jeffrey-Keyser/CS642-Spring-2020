@@ -19,7 +19,7 @@
 | [HW2.pdf](HW2/HW2.pdf) | Attack A: Cookie Theft <br> Attack B: Cross-Site Request Forgery <br> Attack C: SQL Injection | [a.txt](HW2/a.txt) <br> [b.html](HW2/b.html) <br> [c.html](HW2/c.html) | 
 | [HW3.pdf](HW3/HW3.pdf) | Part 1: Wireshark Packet Trace <br> Part 2: Attack Detection | [solutions.txt](HW3/1_wireshark/solutions.txt) <br> [scanner.py](HW3/2_attack/scanner.py)
 | [HW4.pdf](HW4/HW4.pdf) | Buffer Overflow | [sploit0.c](HW4/sploits/sploit0.c) <br> [sploit1.c](HW4/sploits/sploit1.c) <br> [sploit2.c](HW4/sploits/sploit2.c) <br> [sploit3.c](HW4/sploits/sploit3.c) <br> [sploit4.c](HW4/sploits/sploit4.c)
-| [HW5.pdf](HW5/HW5.pdf) | 
+| [HW5.pdf](HW5/HW5.pdf) |  Smart Homes Security Lab | [README.md](HW5/README.md)
 
 ## Class Schedule
 
