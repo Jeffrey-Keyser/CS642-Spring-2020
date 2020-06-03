@@ -13,7 +13,7 @@
 
 | HWs | Tasks | Files | 
 | --- | --- | --- | 
-| [HW1.pdf](HW1/HW1.pdf) | 
+| [HW1.pdf](HW1/HW1.pdf) |  Part A: Password Cracking <br> Part B: Encryption <br> Ex: More Password Cracking | [cracking_simple.py](HW1/cracking_simple.py) <br> [attack.py](HW1/attack.py) <br> [cracking_extra.py](HW1/attack.py) |
 | [HW2.pdf](HW2/HW2.pdf) | 
 | [HW3.pdf](HW3/HW3.pdf) | 
 | [HW4.pdf](HW4/HW4.pdf) | 
