@@ -1,5 +1,9 @@
-# CS642-Spring-2020
+# CS 642 (Spring 2020): Introduction to Information Security @ UW-Madison
+
+- [Course Homepage](https://pages.cs.wisc.edu/~earlence/cs642sp20.html)
  
+
+## Class Schedule
 
 | Week  | Date | Topic | Required Reading | Optional Material|
 | --- | --- | --- | --- | --- |
