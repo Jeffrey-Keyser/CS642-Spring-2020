@@ -1,6 +1,13 @@
 # CS 642 (Spring 2020): Introduction to Information Security @ UW-Madison
 
+# Links
+
+- [GitHub Repo](https://github.com/ShawnZhong/CS642-Spring-2020)
+
+- [GitHub Pages](https://shawnzhong.github.io/CS642-Spring-2020/)
+
 - [Course Homepage](https://pages.cs.wisc.edu/~earlence/cs642sp20.html)
+
  
 ## Homeworks
 
