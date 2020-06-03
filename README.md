@@ -8,6 +8,8 @@
 
 - [Course Homepage](https://pages.cs.wisc.edu/~earlence/cs642sp20.html)
 
+- [Course Homepage (Fall 2019)](https://canvas.wisc.edu/courses/168496)
+
  
 ## Homeworks
 
