@@ -1,7 +1,7 @@
 # CS642-Spring-2020
  
 
-| Week  | Date| Topic (Slides will be in  hyperlinks before lecture)| Required Reading | Optional Material|
+| Week  | Date | Topic | Required Reading | Optional Material|
 | --- | --- | --- | --- | --- |
 | 1  | 21-Jan | [Introduction: Logistics, Security Mindset,Threat Modeling](Slides/cs642-lecture1a-intro.pdf) | | [This World of Ours](https://www.usenix.org/system/files/1401_08-12_mickens.pdf) |
 | | 23-Jan | [Basic Crypto: Randomness, Historical Ciphers,Alice-Bob Setting](Slides/cs642-lecture-2a-crypto-intro-sp20.pdf) | | |
