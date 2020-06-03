@@ -2,6 +2,14 @@
 
 - [Course Homepage](https://pages.cs.wisc.edu/~earlence/cs642sp20.html)
  
+## Homeworks
+
+| HWs | Tasks | Files | 
+| --- | --- | --- | 
+| HW1/HW1.pdf | 
+| HW2/HW2.pdf | 
+| HW3/HW3.pdf | 
+| HW4/HW4.pdf | 
 
 ## Class Schedule
 
